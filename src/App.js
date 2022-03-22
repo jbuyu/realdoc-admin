@@ -1,58 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import { Counter } from "./features/counter/Counter";
+import "./App.css";
+import SideBar from "./components/sidebar/SideBar";
+import TopBar from "./components/topbar/TopBar";
+import Home from "./pages/home/Home";
 
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ConsultationList from "./pages/consultationList/ConsultationList";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
+    <Router>
+      <TopBar />
+      <div className="container">
+        <SideBar />
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route path="/consultations" element={<ConsultationList />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
 export default App;
+
