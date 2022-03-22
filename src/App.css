@@ -6,4 +6,6 @@
   display: flex;
   margin-top: 10px;
 }
-
+header{
+  color: red;
+}

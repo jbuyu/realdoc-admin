@@ -35,3 +35,7 @@
 .material-icon {
   color: #5a46ff;
 }
+
+.header{
+  padding: 1rem !important;
+}
