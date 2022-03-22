@@ -9,3 +9,18 @@
 header{
   color: red;
 }
+
+/* new css */
+
+.auth-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center !important;
+  
+}
+.form{
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+}

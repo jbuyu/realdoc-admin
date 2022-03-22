@@ -17,7 +17,6 @@ function App() {
     <Router>
       <TopBar />
       <div className="container">
-        {/* <SideBar /> */}
         <Switch>
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
