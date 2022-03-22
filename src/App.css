@@ -1,25 +1,23 @@
-*{
-  font-family: 'Source Sans Pro', sans-serif;
+* {
+  font-family: "Source Sans Pro", sans-serif;
 }
 
-.container{
+.container {
   display: flex;
   margin-top: 10px;
 }
-header{
-  color: red;
+header {
+  padding: 0 4rem !important;
 }
-
 /* new css */
 
-.auth-container{
+.auth-container {
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center !important;
-  
 }
-.form{
+.form {
   display: flex;
   flex-direction: column;
   width: 20%;

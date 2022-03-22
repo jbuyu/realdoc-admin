@@ -3,9 +3,9 @@ import { BrowserRouter as Router, Route, Switch, useHistory } from "react-router
 // import Chart from "../../components/chart/Chart";
 import FeaturedInfo from "../../components/featuredInfo/FeaturedInfo";
 import Sidebar from "../../components/sidebar/SideBar";
-import { userData } from "../../dummyData";
-
+import ConsultationList from "../consultationList/ConsultationList";
 import "./home.css";
+
 
 export default function Home() {
   const history = useHistory()
@@ -13,6 +13,7 @@ export default function Home() {
     <Router history={history}>
       <Sidebar />
       <Switch>
+        <Route path="/consultations" component={ConsultationList} />
         <Route path="/" component={FeaturedInfo} />
       </Switch>
     </Router>

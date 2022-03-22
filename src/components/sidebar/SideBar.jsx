@@ -11,9 +11,9 @@ export default function SideBar() {
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Dashboard</h3>
           <ul className="sidebarList">
-            <li className="sidebarListItem active">
+            <Link to="/" className="sidebarListItem active">
               <LineStyleIcon className="sidebarIcon" /> Home
-            </li>
+            </Link>
             <Link to="/consultations" className="sidebarListItem">
               <GroupIcon className="sidebarIcon" /> Consultations
             </Link>
