@@ -3,7 +3,12 @@ import SideBar from "./components/sidebar/SideBar";
 import TopBar from "./components/topbar/TopBar";
 import Home from "./pages/home/Home";
 
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
 import ConsultationList from "./pages/consultationList/ConsultationList";
 import Login from "./pages/Auth/Login";
 import Register from "./pages/Auth/Register";
@@ -12,13 +17,15 @@ function App() {
     <Router>
       <TopBar />
       <div className="container">
-        <SideBar />
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route exact path="/login" element={<Login />} />
-          <Route exact path="/register" element={<Register />} />
-          <Route path="/consultations" element={<ConsultationList />} />
-        </Routes>
+        {/* <SideBar /> */}
+        <Switch>
+          <Route path="/login" component={Login} />
+          <Route path="/register" component={Register} />
+          {/* <PrivateRoute path="/" component={HomePage} /> */}
+          <Route exact path="/" component={Home} />
+          <Redirect to="/" />
+          {/* <Route path="/consultations" component={ConsultationList} /> */}
+        </Switch>
       </div>
     </Router>
   );
