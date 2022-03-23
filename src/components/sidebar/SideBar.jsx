@@ -17,9 +17,12 @@ export default function SideBar() {
             <Link to="/consultations" className="sidebarListItem">
               <GroupIcon className="sidebarIcon" /> Consultations
             </Link>
-            <li className="sidebarListItem">
+            <Link to="#" className="sidebarListItem">
+              <GroupIcon className="sidebarIcon" /> My Patients
+            </Link>
+            {/* <li className="sidebarListItem">
               <TimelineIcon className="sidebarIcon" /> Analytics
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>
