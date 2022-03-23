@@ -1,27 +1,51 @@
-.consultationsList, .consultation{
-    flex: 4;
+.consultationsList,
+.consultation {
+  flex: 4;
 }
+
+
 .viewButton {
-    padding: 2px 5px;
-    border-radius: 5px;
-    color: darkblue;
-    border: 1px dotted rgba(0, 0, 139, 0.596);
-    cursor: pointer;
+  padding: 2px 5px;
+  border-radius: 5px;
+  color: darkblue;
+  border: 1px dotted rgba(0, 0, 139, 0.596);
+  cursor: pointer;
+}
+
+.details-row {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.details-label {
+  display: flex;
+  font-size: 18px;
+  font-weight: bold;
+  width: 20%;
+}
+
+.dignosis-header {
+  padding: 1rem;
+}
+textarea {
+  width: 80%;
+  height: 240px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  resize: none;
+}
+
+.diagnosis-btn-container{
+    width: 80%;
+    display: flex;
+    justify-content: flex-end;
   }
 
-  .details-row{
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-
-      
-  }
-
-
-  .details-label{
-      display: flex;
-      font-size: 18px;
-      font-weight: bold;
-      width: 20%;
-
-  }
+.diagnosis-form{
+    padding: 3rem 1rem;
+}
