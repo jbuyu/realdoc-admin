@@ -4,7 +4,7 @@ import TopBar from "./components/topbar/TopBar";
 import Home from "./pages/home/Home";
 
 import {
-  HashRouter as Router,
+  BrowserRouter as Router,
   Route,
   Switch,
   Redirect,

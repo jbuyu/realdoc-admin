@@ -25,14 +25,14 @@ const getConsultations = async (token) => {
 
   return response.data;
 };
-const getConsultation = async (token, consultationId) => {
+const getConsultation = async (consultationId, token) => {
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   };
 
-  const response = await axios.get(API_URL + consultationId, config);
+  const response = await axios.get(API_URL + `/${consultationId}`, config);
 
   return response.data;
 };

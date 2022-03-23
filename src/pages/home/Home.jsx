@@ -9,7 +9,7 @@ import "./home.css";
 
 
 export default function Home() {
-  const history = useHistory()
+  // const history = useHistory()
   return (
     <Router>
       <Sidebar />
@@ -20,12 +20,4 @@ export default function Home() {
       </Switch>
     </Router>
   );
-}
-
-{
-  /* <div className="home">
-      <FeaturedInfo />
-      <Chart data={userData} title="Consultation Analytics" grid dataKey="Active User"/>
-
-    </div> */
 }

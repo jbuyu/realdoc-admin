@@ -8,3 +8,20 @@
     border: 1px dotted rgba(0, 0, 139, 0.596);
     cursor: pointer;
   }
+
+  .details-row{
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+
+      
+  }
+
+
+  .details-label{
+      display: flex;
+      font-size: 18px;
+      font-weight: bold;
+      width: 20%;
+
+  }
