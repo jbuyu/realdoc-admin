@@ -28,3 +28,7 @@ header {
     width:40%;
   }
 }
+
+.actionBtn{
+  background-color: red !important;
+}
