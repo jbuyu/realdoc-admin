@@ -2,6 +2,7 @@ import { FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa";
 import { Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../features/auth/authSlice";
+import "./topbar.css";
 
 function Header() {
   const history = useHistory();
@@ -21,11 +22,16 @@ function Header() {
       </div>
       <ul>
         {user ? (
-          <li>
-            <button className="btn" onClick={onLogout}>
-              <FaSignOutAlt /> Logout
-            </button>
-          </li>
+          <>
+            <p>
+              Welcome <span className="username">{user.name}</span>
+            </p>
+            <li>
+              <button className="btn" onClick={onLogout}>
+                <FaSignOutAlt /> Logout
+              </button>
+            </li>
+          </>
         ) : (
           <>
             <li>

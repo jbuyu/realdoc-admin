@@ -40,3 +40,10 @@
   padding: 1rem !important;
 }
 
+.username{
+  font-size: 20px;
+  font-weight: bold;
+  padding-left: 1rem;
+  padding-right: .4rem;
+
+}

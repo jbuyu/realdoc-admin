@@ -7,7 +7,7 @@ import { getConsultations } from "../../components/features/consultations/consul
 export default function ConsultationList() {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getConsultations());
+    // dispatch(getConsultations());
     console.log("milan");
   }, [dispatch]);
   return <div className="userList"></div>;
