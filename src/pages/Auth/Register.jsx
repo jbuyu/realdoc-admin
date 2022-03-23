@@ -1,19 +1,21 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { toast } from "react-toastify";
 import { FaUser } from "react-icons/fa";
 import Spinner from "../../components/Spinner";
 import { register, reset } from "../../components/features/auth/authSlice";
+import toast, { Toaster } from "react-hot-toast";
+
 function Register() {
   const [formData, setFormData] = useState({
-    name: "",
+    firstname: "",
+    lastname: "",
     email: "",
     password: "",
     password2: "",
   });
 
-  const { name, email, password, password2 } = formData;
+  const { firstname, lastname, email, password, password2 } = formData;
 
   const history = useHistory();
   const dispatch = useDispatch();
@@ -45,10 +47,23 @@ function Register() {
     e.preventDefault();
 
     if (password !== password2) {
-      toast.error("Passwords do not match");
+      console.log("no match");
+      toast.error("Passwords don't match!", {
+        // style: {
+        //   border: "1px solid #713200",
+        //   padding: "16px",
+        //   color: "#f",
+        //   backgroundColor: "#FF0",
+        // },
+        // iconTheme: {
+        //   primary: "#fff",
+        //   secondary: "#FFFAEE",
+        // },
+      });
     } else {
       const userData = {
-        name,
+        firstname,
+        lastname,
         email,
         password,
       };
@@ -75,10 +90,23 @@ function Register() {
             <input
               type="text"
               className="form-control"
-              id="name"
-              name="name"
-              value={name}
-              placeholder="Enter your name"
+              id="firstname"
+              name="firstname"
+              value={firstname}
+              placeholder="Enter your first name"
+              required
+              onChange={onChange}
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="text"
+              className="form-control"
+              id="lastname"
+              name="lastname"
+              value={lastname}
+              required
+              placeholder="Enter your last name"
               onChange={onChange}
             />
           </div>
@@ -99,6 +127,7 @@ function Register() {
               className="form-control"
               id="password"
               name="password"
+              required
               value={password}
               placeholder="Enter password"
               onChange={onChange}
@@ -110,6 +139,7 @@ function Register() {
               className="form-control"
               id="password2"
               name="password2"
+              required
               value={password2}
               placeholder="Confirm password"
               onChange={onChange}
@@ -122,6 +152,7 @@ function Register() {
           </div>
         </form>
       </section>
+      <Toaster position="bottom-right" reverseOrder={false} />
     </div>
   );
 }
