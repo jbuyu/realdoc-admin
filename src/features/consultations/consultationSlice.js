@@ -20,9 +20,9 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 //   }
 // );
 
-
 const initialState = {
-  goals: [],
+  consultations: [],
+  consultation: "",
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -39,6 +39,24 @@ export const createConsultation = createAsyncThunk(
         consultationData,
         token
       );
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+export const getConsultation = createAsyncThunk(
+  "consultation/get",
+  async (consultationId, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      return await consultationService.getConsultation(consultationId, token);
     } catch (error) {
       const message =
         (error.response &&
@@ -99,6 +117,19 @@ export const consultationSlice = createSlice({
         state.consultations = action.payload;
       })
       .addCase(getConsultations.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(getConsultation.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getConsultation.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.consultation = action.payload;
+      })
+      .addCase(getConsultation.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

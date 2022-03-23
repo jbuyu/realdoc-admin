@@ -11,7 +11,7 @@ import "./home.css";
 export default function Home() {
   const history = useHistory()
   return (
-    <Router history={history}>
+    <Router>
       <Sidebar />
       <Switch>
         <Route path="/consultations" component={ConsultationList} />

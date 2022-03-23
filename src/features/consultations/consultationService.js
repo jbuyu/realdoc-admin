@@ -21,7 +21,18 @@ const getConsultations = async (token) => {
     },
   };
 
-  const response = await axios.get(API_URL,config);
+  const response = await axios.get(API_URL, config);
+
+  return response.data;
+};
+const getConsultation = async (token, consultationId) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const response = await axios.get(API_URL + consultationId, config);
 
   return response.data;
 };
@@ -41,6 +52,7 @@ const deleteConsultation = async (consultationId, token) => {
 const consultationService = {
   createConsultation,
   getConsultations,
+  getConsultation,
   deleteConsultation,
 };
 

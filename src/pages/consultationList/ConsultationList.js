@@ -3,7 +3,8 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import Spinner from "../../components/Spinner";
-import { format, compareAsc } from 'date-fns';
+// import { format, compareAsc } from 'date-fns';
+
 import {Link} from "react-router-dom"
 import "./consultation.css"
 
@@ -43,12 +44,10 @@ export default function ConsultationList() {
       headerName: "Action",
       width: 200,
       renderCell: (params) => {
-        // console.log(params);
         return (
           <div className="cellAction">
             <Link to={`/consultation/${params.row._id}`} style={{ textDecoration: "none" }}>
               <div className="viewButton">view</div>
-              
             </Link>
           </div>
         );
@@ -79,7 +78,7 @@ export default function ConsultationList() {
           rows={consultations}
           columns={columns}
           pageSize={10}
-          rowsPerPageOptions={[5]}
+          rowsPerPageOptions={[10]}
           checkboxSelection
         />
       </div>
