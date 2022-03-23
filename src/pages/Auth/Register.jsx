@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
 import Spinner from "../../components/Spinner";
-import { register, reset } from "../../components/features/auth/authSlice";
+import { register, reset } from "../../features/auth/authSlice";
 import toast, { Toaster } from "react-hot-toast";
 
 function Register() {
