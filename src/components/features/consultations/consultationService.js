@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "/api/consultations/";
+const API_URL = "http://localhost:5000/api/";
 
 const createConsultation = async (consultationData, token) => {
   const config = {
@@ -21,7 +21,7 @@ const getConsultations = async (token) => {
     },
   };
 
-  const response = await axios.get(API_URL, config);
+  const response = await axios.get(API_URL, + "consultations"+ config);
 
   return response.data;
 };

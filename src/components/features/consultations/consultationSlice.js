@@ -33,7 +33,7 @@ export const createConsultation = createAsyncThunk(
 
 // Get user consultations
 export const getConsultations = createAsyncThunk(
-  "consultations/getAll",
+  "consultations",
   async (_, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token;
