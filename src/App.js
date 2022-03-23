@@ -20,10 +20,8 @@ function App() {
         <Switch>
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
-          {/* <PrivateRoute path="/" component={HomePage} /> */}
           <Route exact path="/" component={Home} />
           <Redirect to="/" />
-          {/* <Route path="/consultations" component={ConsultationList} /> */}
         </Switch>
       </div>
     </Router>

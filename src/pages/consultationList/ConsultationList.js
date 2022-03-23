@@ -43,10 +43,12 @@ export default function ConsultationList() {
       headerName: "Action",
       width: 200,
       renderCell: (params) => {
+        // console.log(params);
         return (
           <div className="cellAction">
-            <Link to="/users/test" style={{ textDecoration: "none" }}>
-              <div className="viewButton">View</div>
+            <Link to={`/consultation/${params.row._id}`} style={{ textDecoration: "none" }}>
+              <div className="viewButton">view</div>
+              
             </Link>
           </div>
         );
@@ -70,7 +72,7 @@ export default function ConsultationList() {
     return <Spinner />;
   }
   return (
-    <div className="userList">
+    <div className="consultationsList">
       <div style={{ height: 800, width: "100%" }}>
         <DataGrid
           getRowId={(row) => row._id}
