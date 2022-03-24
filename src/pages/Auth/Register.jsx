@@ -79,8 +79,9 @@ function Register() {
   return (
     <div className="auth-container">
       <section className="heading">
-        <h1>
-          <FaUser /> Register
+        <h1 className="header-row">
+          <img src="/signup.png" alt="sign-up" />
+          Register
         </h1>
       </section>
 
@@ -147,7 +148,7 @@ function Register() {
           </div>
           <div className="form-group">
             <button type="submit" className="btn btn-block">
-              Submit
+              Sign Up
             </button>
           </div>
           <div className="sign-up-link-container">

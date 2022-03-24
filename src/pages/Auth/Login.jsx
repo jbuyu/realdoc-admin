@@ -56,13 +56,12 @@ function Login() {
 
   return (
     <div className="auth-container">
-
       <section className="heading">
-        <h1>
-          <FaSignInAlt /> Login
+        <h1 className="header-row">
+          <img src="/login.png" alt="login" />
+          Login
         </h1>
       </section>
-
       <section className="form">
         <form onSubmit={onSubmit}>
           <div className="form-group">
@@ -92,7 +91,7 @@ function Login() {
           <div className="forgot-link-container">Forgot Password</div>
           <div className="form-group">
             <button type="submit" className="btn btn-block">
-              Submit
+              Sign in
             </button>
           </div>
           <div className="sign-up-link-container">
