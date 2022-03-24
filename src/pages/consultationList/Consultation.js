@@ -1,31 +1,27 @@
-import React, { useEffect } from "react";
-import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import { useDispatch, useSelector } from "react-redux";
-import "react-tabs/style/react-tabs.css";
-import { useNavigate } from "react-router-dom";
-import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import { format } from "date-fns";
-
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
+import "react-tabs/style/react-tabs.css";
 import {
   getConsultation,
-  reset,
+  reset
 } from "../../features/consultations/consultationSlice";
-import { bgcolor, height } from "@mui/system";
 
-export default function Consultation({ match }) {
+
+export default function Consultation() {
+  const {id} = useParams()
   const Style = {
     height: 200,
     width: 200,
   };
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  let consultationId = match.params.id;
 
   const { user } = useSelector((state) => state.auth);
   const { consultation, isLoading, isError, message } = useSelector(
@@ -39,7 +35,7 @@ export default function Consultation({ match }) {
     if (!user) {
       navigate("/login");
     }
-    dispatch(getConsultation(consultationId));
+    dispatch(getConsultation(id));
     console.log("cons", consultation.gender);
     return () => {
       dispatch(reset());

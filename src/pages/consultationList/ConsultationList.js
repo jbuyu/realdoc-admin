@@ -100,7 +100,7 @@ export default function ConsultationList() {
         return (
           <div className="cellAction">
             <Link
-              to={`/consultation/${params.row._id}`}
+              to={`/dashboard/consultations/${params.row._id}`}
               style={{ textDecoration: "none" }}
             >
               <div className="viewButton">view</div>
