@@ -86,6 +86,23 @@ export const getConsultations = createAsyncThunk(
     }
   }
 );
+export const getPendingConsultations = createAsyncThunk(
+  "consultations/getAll/pending",
+  async (_, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      return await consultationService.getPendingConsultations(token);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
 
 export const consultationSlice = createSlice({
   name: "consultation",
@@ -117,6 +134,19 @@ export const consultationSlice = createSlice({
         state.consultations = action.payload;
       })
       .addCase(getConsultations.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(getPendingConsultations.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getPendingConsultations.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.consultations = action.payload;
+      })
+      .addCase(getPendingConsultations.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

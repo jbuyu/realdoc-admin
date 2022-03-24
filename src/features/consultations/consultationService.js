@@ -13,7 +13,6 @@ const createConsultation = async (consultationData, token) => {
   };
 
   const response = await axios.post(API_URL, consultationData, config);
-
   return response.data;
 };
 
@@ -25,9 +24,20 @@ const getConsultations = async (token) => {
   };
 
   const response = await axios.get(API_URL, config);
-
   return response.data;
 };
+
+const getPendingConsultations = async (token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const response = await axios.get(API_URL + "/pending", config);
+  return response.data;
+};
+
 const getConsultation = async (consultationId, token) => {
   const config = {
     headers: {
@@ -36,7 +46,6 @@ const getConsultation = async (consultationId, token) => {
   };
 
   const response = await axios.get(API_URL + `/${consultationId}`, config);
-
   return response.data;
 };
 
@@ -48,7 +57,6 @@ const deleteConsultation = async (consultationId, token) => {
   };
 
   const response = await axios.delete(API_URL + consultationId, config);
-
   return response.data;
 };
 
@@ -57,6 +65,7 @@ const consultationService = {
   getConsultations,
   getConsultation,
   deleteConsultation,
+  getPendingConsultations,
 };
 
 export default consultationService;

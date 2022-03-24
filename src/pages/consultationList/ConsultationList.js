@@ -6,11 +6,9 @@ import { Link, useNavigate } from "react-router-dom";
 import Spinner from "../../components/Spinner";
 import {
   getConsultations,
-  reset
+  reset,
 } from "../../features/consultations/consultationSlice";
 import "./consultation.css";
-
-
 
 export default function ConsultationList() {
   const dispatch = useDispatch();
@@ -18,15 +16,11 @@ export default function ConsultationList() {
 
   //selectors
   const { user } = useSelector((state) => state.auth);
-
   const { consultations, isLoading, isError, message } = useSelector(
     (state) => state.consultations
   );
 
-  //table data
-
   const columns = [
-    // { field: "_id", headerName: "ID", width: 130 },
     {
       field: "createdAt",
       headerName: "Date Created",
@@ -81,7 +75,7 @@ export default function ConsultationList() {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            {params.row.status === "pending" ? (
+            {params.row.status === "Pending" ? (
               <div className="pending-btn">PENDING</div>
             ) : (
               <div className="completed-btn">COMPLETED</div>
