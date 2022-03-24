@@ -10,13 +10,19 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
+import { format } from "date-fns";
+
 import {
   getConsultation,
   reset,
 } from "../../features/consultations/consultationSlice";
-import { bgcolor } from "@mui/system";
+import { bgcolor, height } from "@mui/system";
 
 export default function Consultation({ match }) {
+  const Style = {
+    height: 200,
+    width: 200,
+  };
   const history = useHistory();
   const dispatch = useDispatch();
   let consultationId = match.params.id;
@@ -46,8 +52,9 @@ export default function Consultation({ match }) {
           sx={{
             display: "flex",
             justifyContent: "space-between",
+            alignItems: "center",
             paddingRight: "4rem",
-            width:"80%"
+            width: "80%",
           }}
         >
           <Box
@@ -87,19 +94,25 @@ export default function Consultation({ match }) {
                 </div>
                 <div className="details-row">
                   <div className="details-label">DOB:</div>
-                  <div>{consultation && consultation.dateOfBirth}</div>
+                  <div>
+                    {consultation &&
+                      format(new Date(consultation.dateOfBirth), "MM/dd/yyyy")}
+                  </div>
                 </div>
                 <div className="details-row">
                   <div className="details-label">Type:</div>
                   <div>{consultation && consultation.consultationType}</div>
                 </div>
-                <div className="details-row">
+                {/* <div className="details-row">
                   <div className="details-label">Symptoms:</div>
                   <div>{consultation && consultation.symptoms}</div>
-                </div>
+                </div> */}
                 <div className="details-row">
-                  <div className="details-label">Created on:</div>
-                  <div>{consultation && consultation.createdAt}</div>
+                  <div className="details-label">Date Created:</div>
+                  <div>
+                    {consultation &&
+                      format(new Date(consultation.createdAt), "MM/dd/yyyy")}
+                  </div>
                 </div>
               </Typography>
             </CardContent>
@@ -107,28 +120,32 @@ export default function Consultation({ match }) {
           {consultation && consultation.gender === "Male" ? (
             <CardMedia
               component="img"
-              sx={{ width: 150 }}
+              style={Style}
               image="/male.png"
               alt="male"
             />
           ) : (
             <CardMedia
               component="img"
-              sx={{ width: 150 }}
+              style={Style}
               image="/female.png"
               alt="female"
             />
           )}
         </Card>
+        <h4 className="symptoms-header">symptoms</h4>
+        <div className="symptoms-container">
+          <div className="symptoms">
+            {consultation && consultation.symptoms}
+          </div>
+        </div>
         <h4 className="dignosis-header">Diagnosis</h4>
-          <form className="diagnosis-form">
-            <textarea>Diagnosis...</textarea>
-            <div className="diagnosis-btn-container">
-            <button className="btn" >
-                Update
-              </button>
-              </div>
-          </form>
+        <form className="diagnosis-form">
+          <textarea>Diagnosis...</textarea>
+          <div className="diagnosis-btn-container">
+            <button className="btn">Update</button>
+          </div>
+        </form>
       </div>
     </div>
   );

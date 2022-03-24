@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import Spinner from "../../components/Spinner";
-import { format, compareAsc } from "date-fns";
+import { format } from "date-fns";
 
 import { Link } from "react-router-dom";
 import "./consultation.css";
