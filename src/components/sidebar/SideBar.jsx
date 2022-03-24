@@ -6,6 +6,9 @@ import Consultation from "../../pages/consultationList/Consultation";
 import ConsultationList from "../../pages/consultationList/ConsultationList";
 import { PatientList } from "../../pages/patientList/PatientList";
 import { PendingList } from "../../pages/pendingList/PendingList";
+import GroupAddIcon from '@mui/icons-material/GroupAdd';
+import PendingActionsIcon from '@mui/icons-material/PendingActions';
+import AddTaskIcon from '@mui/icons-material/AddTask';
 import "./sidebar.css";
 export default function SideBar() {
   return (
@@ -17,18 +20,14 @@ export default function SideBar() {
             <GroupIcon className="sidebarIcon" /> Consultations
           </Link>
           <Link to="/dashboard/pending" className="sidebarListItem">
-            <GroupIcon className="sidebarIcon" /> Pending
+            <PendingActionsIcon className="sidebarIcon" /> Pending
           </Link>
           <Link to="/dashboard/completed" className="sidebarListItem">
-            <GroupIcon className="sidebarIcon" /> Completed
+            <AddTaskIcon className="sidebarIcon" /> Completed
           </Link>
           <Link to="/dashboard/patients" className="sidebarListItem">
-            <GroupIcon className="sidebarIcon" /> My Patients
+            <GroupAddIcon className="sidebarIcon" /> My Patients
           </Link>
-         
-          {/* <Link to="/" className="sidebarListItem active">
-            <LineStyleIcon className="sidebarIcon" /> Analytics
-          </Link> */}
         </div>
         <ul className="sidebarList">
           <Routes>
