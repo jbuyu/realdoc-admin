@@ -51,10 +51,52 @@ textarea {
   padding: 1rem;
 }
 
-.symptoms-container{
+.symptoms-container {
   max-width: 50%;
   line-height: 1.6;
 }
 .symptoms {
   padding: 0rem 1rem;
+}
+
+.update-btn {
+  padding: 10px 20px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  background: black;
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  appearance: button;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mark-btn {
+  padding: 10px 20px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  background: white;
+  color: black;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  appearance: button;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 1.4rem;
+}
+
+.mark-btn:hover {
+  background-color: black;
+  color: white;
+}
+
+.update-btn:hover {
+  color: black;
+  background-color: white;
 }

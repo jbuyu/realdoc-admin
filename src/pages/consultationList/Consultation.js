@@ -143,7 +143,8 @@ export default function Consultation({ match }) {
         <form className="diagnosis-form">
           <textarea>Diagnosis...</textarea>
           <div className="diagnosis-btn-container">
-            <button className="btn">Update</button>
+            <button className="update-btn">Update</button>
+            <button className="mark-btn">Mark Complete</button>
           </div>
         </form>
       </div>
