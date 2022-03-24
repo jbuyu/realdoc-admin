@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
 import Spinner from "../../components/Spinner";
 import { register, reset } from "../../features/auth/authSlice";
@@ -149,6 +149,14 @@ function Register() {
             <button type="submit" className="btn btn-block">
               Submit
             </button>
+          </div>
+          <div className="sign-up-link-container">
+            Already have an account?
+            <span>
+              <Link to="/">
+                login
+              </Link>
+            </span>
           </div>
         </form>
       </section>

@@ -1,10 +1,12 @@
-import { useState, useEffect } from "react";
-import { FaSignInAlt } from "react-icons/fa";
-import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
-import { login, reset } from "../../features/auth/authSlice";
+import { FaSignInAlt } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 import Spinner from "../../components/Spinner";
+import { login, reset } from "../../features/auth/authSlice";
+import "./auth.css"
+
 function Login() {
   const [formData, setFormData] = useState({
     email: "",
@@ -41,12 +43,10 @@ function Login() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-
     const userData = {
       email,
       password,
     };
-
     dispatch(login(userData));
   };
 
@@ -56,6 +56,7 @@ function Login() {
 
   return (
     <div className="auth-container">
+
       <section className="heading">
         <h1>
           <FaSignInAlt /> Login
@@ -88,11 +89,19 @@ function Login() {
               onChange={onChange}
             />
           </div>
-
+          <div className="forgot-link-container">Forgot Password</div>
           <div className="form-group">
             <button type="submit" className="btn btn-block">
               Submit
             </button>
+          </div>
+          <div className="sign-up-link-container">
+            Don't have an account?
+            <span>
+              <Link to="/register">
+                Sign Up
+              </Link>
+            </span>
           </div>
         </form>
       </section>

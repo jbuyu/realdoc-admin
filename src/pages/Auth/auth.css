@@ -1,0 +1,30 @@
+.forgot-link-container {
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 1rem;
+  margin-top: 0;
+  padding-top: 0;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.forgot-link-container:hover {
+  color: gray;
+  text-decoration: underline;
+}
+
+.sign-up-link-container {
+  display: flex;
+  justify-content: center;
+}
+
+.sign-up-link-container span {
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0 .4rem;
+}
+
+.sign-up-link-container span:hover {
+  text-decoration: underline;
+  color: gray;
+}
