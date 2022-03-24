@@ -13,7 +13,7 @@ export default function SideBar() {
       <div className="sidebarWrapper">
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Dashboard</h3>
-          <Link to="/dashboard/consultations" className="sidebarListItem">
+          <Link to="/dashboard" className="sidebarListItem">
             <GroupIcon className="sidebarIcon" /> Consultations
           </Link>
           <Link to="/dashboard/pending" className="sidebarListItem">
@@ -33,7 +33,7 @@ export default function SideBar() {
         <ul className="sidebarList">
           <Routes>
             <Route
-              path="consultations"
+              path=""
               className="sidebarListItem"
               element={<ConsultationList />}
             >

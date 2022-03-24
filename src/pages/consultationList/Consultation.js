@@ -10,12 +10,11 @@ import { useNavigate, useParams } from "react-router-dom";
 import "react-tabs/style/react-tabs.css";
 import {
   getConsultation,
-  reset
+  reset,
 } from "../../features/consultations/consultationSlice";
 
-
 export default function Consultation() {
-  const {id} = useParams()
+  const { id } = useParams();
   const Style = {
     height: 200,
     width: 200,
@@ -33,10 +32,9 @@ export default function Consultation() {
       console.log(message);
     }
     if (!user) {
-      navigate("/login");
+      navigate("/");
     }
     dispatch(getConsultation(id));
-    console.log("cons", consultation.gender);
     return () => {
       dispatch(reset());
     };

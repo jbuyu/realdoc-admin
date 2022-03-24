@@ -1,18 +1,16 @@
 import { DataGrid } from "@mui/x-data-grid";
+import { format } from "date-fns";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Spinner from "../../components/Spinner";
-import { format } from "date-fns";
-
-import { Link } from "react-router-dom";
-import "./consultation.css";
-
 import {
   getConsultations,
-  reset,
+  reset
 } from "../../features/consultations/consultationSlice";
 import "./consultation.css";
+
+
 
 export default function ConsultationList() {
   const dispatch = useDispatch();
@@ -115,7 +113,7 @@ export default function ConsultationList() {
       console.log(message);
     }
     if (!user) {
-      navigate("/login");
+      navigate("/");
     }
     dispatch(getConsultations());
     return () => {
