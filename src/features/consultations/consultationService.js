@@ -38,6 +38,17 @@ const getPendingConsultations = async (token) => {
   return response.data;
 };
 
+const getCompletedConsultations = async (token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const response = await axios.get(API_URL + "/completed", config);
+  return response.data;
+};
+
 const getConsultation = async (consultationId, token) => {
   const config = {
     headers: {
@@ -66,6 +77,7 @@ const consultationService = {
   getConsultation,
   deleteConsultation,
   getPendingConsultations,
+  getCompletedConsultations,
 };
 
 export default consultationService;

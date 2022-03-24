@@ -1,11 +1,11 @@
 import GroupIcon from "@mui/icons-material/Group";
 import React from "react";
 import { Link, Route, Routes } from "react-router-dom";
-import { CompletedList } from "../../pages/completedList/CompletedList";
+import CompletedList from "../../pages/completedList/CompletedList";
 import Consultation from "../../pages/consultationList/Consultation";
 import ConsultationList from "../../pages/consultationList/ConsultationList";
 import { PatientList } from "../../pages/patientList/PatientList";
-import  PendingList  from "../../pages/pendingList/PendingList";
+import PendingList from "../../pages/pendingList/PendingList";
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
 import PendingActionsIcon from '@mui/icons-material/PendingActions';
 import AddTaskIcon from '@mui/icons-material/AddTask';

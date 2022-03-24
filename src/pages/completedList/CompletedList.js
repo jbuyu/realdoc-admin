@@ -1,8 +1,137 @@
-import React from 'react';
-import "./completed-list.css"
+import { DataGrid } from "@mui/x-data-grid";
+import { format } from "date-fns";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import Spinner from "../../components/Spinner";
+import {
+  getCompletedConsultations,
+  getConsultations,
+  getPendingConsultations,
+  reset,
+} from "../../features/consultations/consultationSlice";
+import "./completed-list.css";
 
-export const CompletedList = () => {
+export default function CompletedList() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  //selectors
+  const { user } = useSelector((state) => state.auth);
+  const { consultations, isLoading, isError, message } = useSelector(
+    (state) => state.consultations
+  );
+
+  const columns = [
+    {
+      field: "createdAt",
+      headerName: "Date Created",
+      width: 130,
+      renderCell: (params) => {
+        return (
+          <div className="cellAction">
+            <div className="">
+              {format(new Date(params.row.createdAt), "MM/dd/yyyy")}
+            </div>
+          </div>
+        );
+      },
+    },
+    { field: "consultationType", headerName: "Type", width: 120 },
+    { field: "gender", headerName: "Gender", width: 70 },
+    {
+      field: "name",
+      headerName: "Name",
+      width: 140,
+      renderCell: (params) => {
+        return (
+          <div className="cellAction">
+            <div className="">
+              {params.row.firstName + " " + params.row.lastName}
+            </div>
+          </div>
+        );
+      },
+    },
+    { field: "phoneNo", headerName: "Phone Number", width: 120 },
+    {
+      field: "dateOfBirth",
+      headerName: "DOB",
+      width: 130,
+      renderCell: (params) => {
+        return (
+          <div className="cellAction">
+            <div className="">
+              {format(new Date(params.row.dateOfBirth), "MM/dd/yyyy")}
+            </div>
+          </div>
+        );
+      },
+    },
+    { field: "email", headerName: "Email", width: 130 },
+    { field: "symptoms", headerName: "Symptoms", width: 200 },
+    {
+      field: "status",
+      headerName: "Status",
+      width: 140,
+      renderCell: (params) => {
+        return (
+          <div className="cellAction">
+            {params.row.status === "Pending" ? (
+              <div className="pending-btn">PENDING</div>
+            ) : (
+              <div className="completed-btn">COMPLETED</div>
+            )}
+          </div>
+        );
+      },
+    },
+    {
+      field: "action",
+      headerName: "Action",
+      width: 140,
+      renderCell: (params) => {
+        return (
+          <div className="cellAction">
+            <Link
+              to={`/dashboard/consultations/${params.row._id}`}
+              style={{ textDecoration: "none" }}
+            >
+              <div className="viewButton">view</div>
+            </Link>
+          </div>
+        );
+      },
+    },
+  ];
+  useEffect(() => {
+    if (isError) {
+      console.log(message);
+    }
+    if (!user) {
+      navigate("/");
+    }
+    dispatch(getCompletedConsultations());
+    return () => {
+      dispatch(reset());
+    };
+  }, [dispatch, navigate, message, isError]);
+
+  if (isLoading) {
+    return <Spinner />;
+  }
   return (
-    <div>CompletedList</div>
-  )
+    <div className="consultationsList">
+      <div style={{ height: 800, width: "100%" }}>
+        <DataGrid
+          getRowId={(row) => row._id}
+          rows={consultations}
+          columns={columns}
+          pageSize={10}
+          rowsPerPageOptions={[10]}
+          checkboxSelection
+        />
+      </div>
+    </div>
+  );
 }
