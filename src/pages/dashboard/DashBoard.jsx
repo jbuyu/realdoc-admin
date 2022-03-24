@@ -9,14 +9,6 @@ import "./dashboard.css";
 
 export default function DashBoard() {
   return (
-    // <Routes>
-    //   <Routes>
-    //   <Sidebar />
-    //     <Route path="/consultations" element={<ConsultationList />} />
-    //     <Route path="/consultation/:id" element={<Consultation />} />
-    //     <Route path="/" element={<FeaturedInfo />} />
-    //   </Routes>
-    // </Routes>
     <div className="home">
       <TopBar />
       <Sidebar />
