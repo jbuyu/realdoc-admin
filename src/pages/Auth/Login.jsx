@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { FaSignInAlt } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import { login, reset } from "../../features/auth/authSlice";
 import Spinner from "../../components/Spinner";
@@ -13,7 +13,7 @@ function Login() {
 
   const { email, password } = formData;
 
-  const history = useHistory();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const { user, isLoading, isError, isSuccess, message } = useSelector(
@@ -26,11 +26,11 @@ function Login() {
     }
 
     if (isSuccess || user) {
-      history.push("/");
+      navigate("/dashboard");
     }
 
     dispatch(reset());
-  }, [user, isError, isSuccess, message, history, dispatch]);
+  }, [user, isError, isSuccess, message, navigate, dispatch]);
 
   const onChange = (e) => {
     setFormData((prevState) => ({

@@ -12,7 +12,7 @@ export default function SideBar() {
           <h3 className="sidebarTitle">Dashboard</h3>
           <ul className="sidebarList">
             <Link to="/" className="sidebarListItem active">
-              <LineStyleIcon className="sidebarIcon" /> Home
+              <LineStyleIcon className="sidebarIcon" /> DashBoard
             </Link>
             <Link to="/consultations" className="sidebarListItem">
               <GroupIcon className="sidebarIcon" /> Consultations

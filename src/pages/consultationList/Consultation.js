@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import { useDispatch, useSelector } from "react-redux";
 import "react-tabs/style/react-tabs.css";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
@@ -23,7 +23,7 @@ export default function Consultation({ match }) {
     height: 200,
     width: 200,
   };
-  const history = useHistory();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   let consultationId = match.params.id;
 
@@ -37,14 +37,14 @@ export default function Consultation({ match }) {
       console.log(message);
     }
     if (!user) {
-      history.push("/login");
+      navigate("/login");
     }
     dispatch(getConsultation(consultationId));
     console.log("cons", consultation.gender);
     return () => {
       dispatch(reset());
     };
-  }, [dispatch, history, message, isError]);
+  }, [dispatch, navigate, message, isError]);
   return (
     <div className="consultation">
       <div className="consultation-container">

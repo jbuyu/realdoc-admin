@@ -1,28 +1,26 @@
-import {
-  BrowserRouter as Router, Redirect, Route,
-  Switch
-} from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import "./App.css";
 import TopBar from "./components/topbar/TopBar";
 import Login from "./pages/Auth/Login";
 import Register from "./pages/Auth/Register";
-import Home from "./pages/home/Home";
+// import DashBoard from "./pages/dashBoard/DashBoard";
 
+import DashBoard from "./pages/dashboard/DashBoard"
 
 
 function App() {
   return (
-    <Router>
-      <TopBar />
+    <BrowserRouter>
+      {/* <TopBar /> */}
       <div className="container">
-        <Switch>
-          <Route path="/login" component={Login} />
-          <Route path="/register" component={Register} />
-          <Route exact path="/" component={Home} />
-          <Redirect to="/" />
-        </Switch>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/dashboard" element={<DashBoard />} />
+          <Route path="/register" element={<Register />} />
+          {/* <Route exact path="/" element={<DashBoard />} /> */}
+        </Routes>
       </div>
-    </Router>
+    </BrowserRouter>
   );
 }
 

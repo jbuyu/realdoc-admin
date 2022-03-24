@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
 import Spinner from "../../components/Spinner";
 import { register, reset } from "../../features/auth/authSlice";
@@ -17,7 +17,7 @@ function Register() {
 
   const { firstname, lastname, email, password, password2 } = formData;
 
-  const history = useHistory();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const { user, isLoading, isError, isSuccess, message } = useSelector(
@@ -30,11 +30,11 @@ function Register() {
     }
 
     if (isSuccess || user) {
-      history.push("/");
+      navigate("/");
     }
 
     dispatch(reset());
-  }, [user, isError, isSuccess, message, history, dispatch]);
+  }, [user, isError, isSuccess, message, navigate, dispatch]);
 
   const onChange = (e) => {
     setFormData((prevState) => ({

@@ -1,7 +1,7 @@
 import { DataGrid } from "@mui/x-data-grid";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Spinner from "../../components/Spinner";
 import { format } from "date-fns";
 
@@ -16,7 +16,7 @@ import "./consultation.css";
 
 export default function ConsultationList() {
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   //selectors
   const { user } = useSelector((state) => state.auth);
@@ -115,13 +115,13 @@ export default function ConsultationList() {
       console.log(message);
     }
     if (!user) {
-      history.push("/login");
+      navigate("/login");
     }
     dispatch(getConsultations());
     return () => {
       dispatch(reset());
     };
-  }, [dispatch, history, message, isError]);
+  }, [dispatch, navigate, message, isError]);
 
   if (isLoading) {
     return <Spinner />;
