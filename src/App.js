@@ -1,17 +1,15 @@
-import "./App.css";
-import SideBar from "./components/sidebar/SideBar";
-import TopBar from "./components/topbar/TopBar";
-import Home from "./pages/home/Home";
-
 import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect,
+  BrowserRouter as Router, Redirect, Route,
+  Switch
 } from "react-router-dom";
-import ConsultationList from "./pages/consultationList/ConsultationList";
+import "./App.css";
+import TopBar from "./components/topbar/TopBar";
 import Login from "./pages/Auth/Login";
 import Register from "./pages/Auth/Register";
+import Home from "./pages/home/Home";
+
+
+
 function App() {
   return (
     <Router>

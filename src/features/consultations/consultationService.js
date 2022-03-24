@@ -1,9 +1,9 @@
 import axios from "axios";
 
-// const API_URL = "http://localhost:5000/api/consultations";
-const API_URL = "https://realdoc-server.herokuapp.com/api/consultations";
-
-
+const API_URL =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:5000/api/consultations"
+    : "https://realdoc-server.herokuapp.com/api/consultations";
 
 const createConsultation = async (consultationData, token) => {
   const config = {
