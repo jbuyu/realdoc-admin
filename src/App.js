@@ -11,13 +11,11 @@ import DashBoard from "./pages/dashboard/DashBoard"
 function App() {
   return (
     <BrowserRouter>
-      {/* <TopBar /> */}
       <div className="container">
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="/dashboard" element={<DashBoard />} />
           <Route path="/register" element={<Register />} />
-          {/* <Route exact path="/" element={<DashBoard />} /> */}
+          <Route path="/dashboard/*" element={<DashBoard />} />
         </Routes>
       </div>
     </BrowserRouter>

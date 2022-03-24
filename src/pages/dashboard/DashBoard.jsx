@@ -17,7 +17,7 @@ export default function DashBoard() {
     //     <Route path="/" element={<FeaturedInfo />} />
     //   </Routes>
     // </Routes>
-    <div>
+    <div className="home">
       <TopBar />
       <Sidebar />
     </div>
