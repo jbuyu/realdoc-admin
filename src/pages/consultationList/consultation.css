@@ -4,11 +4,34 @@
 }
 
 .viewButton {
-  padding: 2px 5px;
+  padding: 2px 10px;
   border-radius: 5px;
-  color: darkblue;
+  color: #000;
   border: 1px dotted rgba(0, 0, 139, 0.596);
   cursor: pointer;
+  font-weight: bold;
+}
+.viewButton:hover {
+  background-color: gray;
+  color: #fff;
+}
+
+.pending-btn {
+  padding: 2px 5px;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  background-color: #f8ba03;
+  font-weight: bold;
+}
+
+.completed-btn {
+  padding: 2px 5px;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  background-color: #60d835;
+  font-weight: bold;
 }
 
 .details-row {

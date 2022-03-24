@@ -82,9 +82,9 @@ export default function ConsultationList() {
         return (
           <div className="cellAction">
             {params.row.status === "pending" ? (
-              <div className="viewButton">PENDING</div>
+              <div className="pending-btn">PENDING</div>
             ) : (
-              <div className="viewButton">COMPLETED</div>
+              <div className="completed-btn">COMPLETED</div>
             )}
           </div>
         );

@@ -1,10 +1,9 @@
-import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { FaUser } from "react-icons/fa";
 import Spinner from "../../components/Spinner";
 import { register, reset } from "../../features/auth/authSlice";
-import toast, { Toaster } from "react-hot-toast";
 
 function Register() {
   const [formData, setFormData] = useState({
