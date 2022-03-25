@@ -11,6 +11,7 @@ import "react-tabs/style/react-tabs.css";
 import {
   getConsultation,
   reset,
+  updateConsultation,
 } from "../../features/consultations/consultationSlice";
 
 export default function Consultation() {
@@ -27,9 +28,20 @@ export default function Consultation() {
     (state) => state.consultations
   );
 
+  //fn
+  const markComplete = (e) => {
+    let consultationData = {
+      consultationId: id,
+      status: "Completed",
+      user: user._id,
+    };
+    e.preventDefault();
+    dispatch(updateConsultation(consultationData));
+  };
+
   useEffect(() => {
     if (isError) {
-      console.log(message);
+      console.log("error", message);
     }
     if (!user) {
       navigate("/");
@@ -138,9 +150,15 @@ export default function Consultation() {
           <textarea>Diagnosis...</textarea>
           <div className="diagnosis-btn-container">
             <button className="update-btn">Update</button>
-            <button className="mark-btn">Mark Complete</button>
+            {consultation && consultation.status === "Pending" && (
+              <button onClick={markComplete} className="mark-btn">
+                Mark Complete
+              </button>
+            )}
           </div>
         </form>
+        {isLoading && <p>Loading</p>}
+        {isError && <p>{message}</p>}
       </div>
     </div>
   );

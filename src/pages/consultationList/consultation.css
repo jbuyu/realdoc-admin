@@ -70,10 +70,6 @@ textarea {
   justify-content: flex-end;
 }
 
-.diagnosis-form {
-  padding: 1rem;
-}
-
 .symptoms-container {
   max-width: 50%;
   line-height: 1.6;

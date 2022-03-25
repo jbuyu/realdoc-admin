@@ -1,25 +1,6 @@
 import consultationService from "./consultationService";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-// // Delete user consultation
-// export const deleteConsultation = createAsyncThunk(
-//   "consultations/delete",
-//   async (id, thunkAPI) => {
-//     try {
-//       const token = thunkAPI.getState().auth.user.token;
-//       return await consultationService.deleteConsultation(id, token);
-//     } catch (error) {
-//       const message =
-//         (error.response &&
-//           error.response.data &&
-//           error.response.data.message) ||
-//         error.message ||
-//         error.toString();
-//       return thunkAPI.rejectWithValue(message);
-//     }
-//   }
-// );
-
 const initialState = {
   consultations: [],
   consultation: "",
@@ -86,6 +67,29 @@ export const getConsultations = createAsyncThunk(
     }
   }
 );
+
+// Delete user consultation
+export const updateConsultation = createAsyncThunk(
+  "consultations/update",
+  async (consultationData, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      return await consultationService.updateConsultation(
+        consultationData,
+        token
+      );
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 export const getPendingConsultations = createAsyncThunk(
   "consultations/getAll/pending",
   async (_, thunkAPI) => {
@@ -193,22 +197,24 @@ export const consultationSlice = createSlice({
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
+      })
+      .addCase(updateConsultation.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(updateConsultation.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        // state.consultations = state.consultations.filter(
+        //   (consultation) => consultation._id !== action.payload.id
+        // );
+        state.consultation = action.payload;
+      })
+      .addCase(updateConsultation.rejected, (state, action) => {
+        console.log("rejected", action.payload);
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
       });
-    // .addCase(deleteConsultation.pending, (state) => {
-    //   state.isLoading = true;
-    // })
-    // .addCase(deleteConsultation.fulfilled, (state, action) => {
-    //   state.isLoading = false;
-    //   state.isSuccess = true;
-    //   state.consultations = state.consultations.filter(
-    //     (consultation) => consultation._id !== action.payload.id
-    //   );
-    // })
-    // .addCase(deleteConsultation.rejected, (state, action) => {
-    //   state.isLoading = false;
-    //   state.isError = true;
-    //   state.message = action.payload;
-    // });
   },
 });
 

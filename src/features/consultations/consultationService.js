@@ -60,6 +60,28 @@ const getConsultation = async (consultationId, token) => {
   return response.data;
 };
 
+const updateConsultation = async (consultationData, token) => {
+  const { consultationId, ...updateData } = consultationData;
+
+  // console.log("Updating con", consultationId, updateData);
+
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  console.log("making axios req");
+
+  const response = await axios.put(
+    API_URL + `/${consultationId}`,
+    updateData,
+    config
+  );
+  console.log("returning response", response);
+
+  return response.data;
+};
+
 const deleteConsultation = async (consultationId, token) => {
   const config = {
     headers: {
@@ -78,6 +100,7 @@ const consultationService = {
   deleteConsultation,
   getPendingConsultations,
   getCompletedConsultations,
+  updateConsultation,
 };
 
 export default consultationService;
