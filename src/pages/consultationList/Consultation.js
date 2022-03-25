@@ -7,6 +7,7 @@ import { format } from "date-fns";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
 import "react-tabs/style/react-tabs.css";
 import {
   getConsultation,
@@ -24,7 +25,7 @@ export default function Consultation() {
   const dispatch = useDispatch();
 
   const { user } = useSelector((state) => state.auth);
-  const { consultation, isLoading, isError, message } = useSelector(
+  const { consultation, isLoading, isError, message, isSuccess } = useSelector(
     (state) => state.consultations
   );
 
@@ -43,6 +44,7 @@ export default function Consultation() {
     if (isError) {
       console.log("error", message);
     }
+
     if (!user) {
       navigate("/");
     }
@@ -155,11 +157,16 @@ export default function Consultation() {
                 Mark Complete
               </button>
             )}
+            {/* <button onClick={markComplete} className="mark-btn">
+                Mark Complete
+              </button> */}
           </div>
         </form>
-        {isLoading && <p>Loading</p>}
-        {isError && <p>{message}</p>}
+        {isLoading && <img src="/loader.gif" alt="" />}
+        {/* {isError && <p>{message}</p>} */}
+        {/* {isSuccess && toast.success("Consultation Completed!")} */}
       </div>
+      {/* <Toaster position="bottom-right" reverseOrder={false} /> */}
     </div>
   );
 }
