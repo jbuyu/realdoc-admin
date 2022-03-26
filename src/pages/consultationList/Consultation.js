@@ -4,7 +4,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { format } from "date-fns";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
@@ -29,15 +29,31 @@ export default function Consultation() {
     (state) => state.consultations
   );
 
+  //state
+
+  const [consultationValue, setConsultationValue] = useState("");
+
   //fn
   const markComplete = (e) => {
+    e.preventDefault();
     let consultationData = {
       consultationId: id,
       status: "Completed",
       user: user._id,
     };
-    e.preventDefault();
     dispatch(updateConsultation(consultationData));
+  };
+  const handleDiagnosis = (e) => {
+    e.preventDefault();
+    let consultationData = {
+      consultationId: id,
+      diagnosis: consultationValue,
+      user: user._id,
+    };
+    dispatch(updateConsultation(consultationData));
+  };
+  const handleChange = (e) => {
+    setConsultationValue(e.target.value);
   };
 
   useEffect(() => {
@@ -49,6 +65,11 @@ export default function Consultation() {
       navigate("/");
     }
     dispatch(getConsultation(id));
+    if (consultation && consultation.diagnosis) {
+      console.log("setting...", consultation.diagnosis);
+      setConsultationValue(consultation.diagnosis);
+    }
+
     return () => {
       dispatch(reset());
     };
@@ -111,10 +132,6 @@ export default function Consultation() {
                   <div className="details-label">Type:</div>
                   <div>{consultation && consultation.consultationType}</div>
                 </div>
-                {/* <div className="details-row">
-                  <div className="details-label">Symptoms:</div>
-                  <div>{consultation && consultation.symptoms}</div>
-                </div> */}
                 <div className="details-row">
                   <div className="details-label">Date Created:</div>
                   <div>
@@ -148,18 +165,20 @@ export default function Consultation() {
           </div>
         </div>
         <h4 className="dignosis-header">Diagnosis</h4>
-        <form className="diagnosis-form">
-          <textarea>Diagnosis...</textarea>
+        <form onSubmit={handleDiagnosis} className="diagnosis-form">
+          <textarea
+            onChange={handleChange}
+            value={consultationValue || consultation.diagnosis}
+          ></textarea>
           <div className="diagnosis-btn-container">
-            <button className="update-btn">Update</button>
+            <button type="submit" className="update-btn">
+              Update
+            </button>
             {consultation && consultation.status === "Pending" && (
               <button onClick={markComplete} className="mark-btn">
                 Mark Complete
               </button>
             )}
-            {/* <button onClick={markComplete} className="mark-btn">
-                Mark Complete
-              </button> */}
           </div>
         </form>
         {isLoading && <img src="/loader.gif" alt="" />}
