@@ -67,6 +67,23 @@ export const getConsultations = createAsyncThunk(
     }
   }
 );
+export const getDoctorConsultations = createAsyncThunk(
+  "doctorConsultations/getAll",
+  async (_, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      return await consultationService.getDoctorConsultations(token);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
 
 // Delete user consultation
 export const updateConsultation = createAsyncThunk(
@@ -155,6 +172,19 @@ export const consultationSlice = createSlice({
         state.consultations = action.payload;
       })
       .addCase(getConsultations.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(getDoctorConsultations.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getDoctorConsultations.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.consultations = action.payload;
+      })
+      .addCase(getDoctorConsultations.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

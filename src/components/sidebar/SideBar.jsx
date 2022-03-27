@@ -4,7 +4,7 @@ import { Link, Route, Routes } from "react-router-dom";
 import CompletedList from "../../pages/completedList/CompletedList";
 import Consultation from "../../pages/consultationList/Consultation";
 import ConsultationList from "../../pages/consultationList/ConsultationList";
-import { PatientList } from "../../pages/patientList/PatientList";
+import PatientList from "../../pages/patientList/PatientList";
 import PendingList from "../../pages/pendingList/PendingList";
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
 import PendingActionsIcon from '@mui/icons-material/PendingActions';
