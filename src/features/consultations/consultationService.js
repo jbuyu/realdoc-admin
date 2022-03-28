@@ -88,7 +88,7 @@ const updateConsultation = async (consultationData, token) => {
     updateData,
     config
   );
-  console.log("returning response", response);
+  // console.log("returning response", response);
 
   return response.data;
 };

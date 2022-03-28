@@ -119,3 +119,11 @@ textarea {
   color: black;
   background-color: white;
 }
+
+
+/* media screens */
+@media (max-width: 640px) { 
+  .details-label{
+    display: none;
+  }
+}

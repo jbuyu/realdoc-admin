@@ -17,16 +17,25 @@ export default function SideBar() {
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Dashboard</h3>
           <Link to="/dashboard" className="sidebarListItem">
-            <GroupIcon className="sidebarIcon" /> Consultations
+            <GroupIcon className="sidebarIcon" />
+            <div className="sidebar-title" >
+              Consultations
+            </div>
           </Link>
           <Link to="/dashboard/pending" className="sidebarListItem">
-            <PendingActionsIcon className="sidebarIcon" /> Pending
+            <PendingActionsIcon className="sidebarIcon" /> <div className="sidebar-title" >
+              Pending
+            </div>
           </Link>
           <Link to="/dashboard/completed" className="sidebarListItem">
-            <AddTaskIcon className="sidebarIcon" /> Completed
+            <AddTaskIcon className="sidebarIcon" /> <div className="sidebar-title" >
+              Completed
+            </div>
           </Link>
           <Link to="/dashboard/patients" className="sidebarListItem">
-            <GroupAddIcon className="sidebarIcon" /> My Patients
+            <GroupAddIcon className="sidebarIcon" /> <div className="sidebar-title" >
+              My Patients
+            </div>
           </Link>
         </div>
         <ul className="sidebarList">

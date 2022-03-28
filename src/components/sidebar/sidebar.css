@@ -46,3 +46,10 @@
     margin-right: 5px;
     font-size: 20px !important;
 }
+
+/* media screens */
+@media (max-width: 640px) { 
+  .sidebar-title{
+    display: none;
+  }
+}
