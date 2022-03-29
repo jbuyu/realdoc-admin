@@ -18,14 +18,22 @@ function Header() {
   return (
     <header className="header">
       <div className="topLeft">
-        <img className="logo" src="./logo.png" alt="app_logo" />
+        <img height={64} className="logo" src="./logo1.svg" alt="app_logo" />
+        <div className="admin-header">
+          Star Admin
+        </div>
+      </div>
+      <div>
+        <a href="https://realdoc.vercel.app/" target="_blank" rel="noopener noreferrer">
+          <img className="logo" height={50} src="./client.png" alt="" />
+        </a>
       </div>
       <ul>
         {user ? (
           <>
-            <p>
+            <div className="welcome-text">
               Welcome <span className="username">{user.name}</span>
-            </p>
+            </div>
             <li>
               <button className="btn" onClick={onLogout}>
                 <FaSignOutAlt /> Logout
