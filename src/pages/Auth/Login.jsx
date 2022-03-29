@@ -87,7 +87,7 @@ function Login() {
               onChange={onChange}
             />
           </div>
-          <div className="forgot-link-container">Forgot Password</div>
+          <Link to="/forgot" className="forgot-link-container">Forgot Password</Link>
           <div className="form-group">
             <button type="submit" className="btn btn-block">
               Sign in

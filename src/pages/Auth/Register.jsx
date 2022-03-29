@@ -48,16 +48,6 @@ function Register() {
     if (password !== password2) {
       console.log("no match");
       toast.error("Passwords don't match!", {
-        // style: {
-        //   border: "1px solid #713200",
-        //   padding: "16px",
-        //   color: "#f",
-        //   backgroundColor: "#FF0",
-        // },
-        // iconTheme: {
-        //   primary: "#fff",
-        //   secondary: "#FFFAEE",
-        // },
       });
     } else {
       const userData = {
