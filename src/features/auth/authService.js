@@ -29,6 +29,14 @@ const login = async (userData) => {
   return response.data;
 };
 
+const forgot = async (userData) => {
+  const response = await axios.put(API_URL, userData);
+  if (response.data) {
+    localStorage.removeItem("user");
+  }
+  setTimeout(() => response.data, 1000);
+};
+
 // Logout user
 const logout = () => {
   localStorage.removeItem("user");
@@ -38,6 +46,7 @@ const authService = {
   register,
   logout,
   login,
+  forgot,
 };
 
 export default authService;

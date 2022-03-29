@@ -3,7 +3,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import Spinner from "../../components/Spinner";
-import { login, reset } from "../../features/auth/authSlice";
+import { forgot, login, reset } from "../../features/auth/authSlice";
 import "./auth.css";
 
 function Forgot() {
@@ -29,7 +29,7 @@ function Forgot() {
         }
 
         if (isSuccess || user) {
-            navigate("/login");
+            navigate("/");
         }
 
         dispatch(reset());
@@ -51,8 +51,7 @@ function Forgot() {
                 oldPassword,
                 newPassword
             };
-            console.log(userData)
-            // dispatch(login(userData));
+            dispatch(forgot(userData));
         } else {
             //make
             toast.error("Passwords don't match")
