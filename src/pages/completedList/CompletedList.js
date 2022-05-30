@@ -17,9 +17,9 @@ export default function CompletedList() {
   const navigate = useNavigate();
 
   //selectors
-  const { user } = useSelector((state) => state.auth);
+  const { user } = useSelector(state => state.auth);
   const { consultations, isLoading, isError, message } = useSelector(
-    (state) => state.consultations
+    state => state.consultations
   );
 
   const columns = [
@@ -27,7 +27,7 @@ export default function CompletedList() {
       field: "createdAt",
       headerName: "Date Created",
       width: 130,
-      renderCell: (params) => {
+      renderCell: params => {
         return (
           <div className="cellAction">
             <div className="">
@@ -43,7 +43,7 @@ export default function CompletedList() {
       field: "name",
       headerName: "Name",
       width: 140,
-      renderCell: (params) => {
+      renderCell: params => {
         return (
           <div className="cellAction">
             <div className="">
@@ -56,12 +56,13 @@ export default function CompletedList() {
     { field: "phoneNo", headerName: "Phone Number", width: 120 },
     {
       field: "dateOfBirth",
-      headerName: "DOB",
+      headerName: "AGE",
       width: 130,
-      renderCell: (params) => {
+      renderCell: params => {
         return (
           <div className="cellAction">
             <div className="">
+              {params.row.dateOfBirth}
               {format(new Date(params.row.dateOfBirth), "MM/dd/yyyy")}
             </div>
           </div>
@@ -74,7 +75,7 @@ export default function CompletedList() {
       field: "status",
       headerName: "Status",
       width: 140,
-      renderCell: (params) => {
+      renderCell: params => {
         return (
           <div className="cellAction">
             {params.row.status === "Pending" ? (
@@ -90,7 +91,7 @@ export default function CompletedList() {
       field: "action",
       headerName: "Action",
       width: 140,
-      renderCell: (params) => {
+      renderCell: params => {
         return (
           <div className="cellAction">
             <Link
@@ -124,7 +125,7 @@ export default function CompletedList() {
     <div className="consultationsList">
       <div style={{ height: 800, width: "100%" }}>
         <DataGrid
-          getRowId={(row) => row._id}
+          getRowId={row => row._id}
           rows={consultations}
           columns={columns}
           pageSize={10}
