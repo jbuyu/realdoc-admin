@@ -24,9 +24,9 @@ export default function Consultation() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { user } = useSelector((state) => state.auth);
+  const { user } = useSelector(state => state.auth);
   const { consultation, isLoading, isError, message, isSuccess } = useSelector(
-    (state) => state.consultations
+    state => state.consultations
   );
 
   //state
@@ -34,7 +34,7 @@ export default function Consultation() {
   const [consultationValue, setConsultationValue] = useState("");
 
   //fn
-  const markComplete = (e) => {
+  const markComplete = e => {
     e.preventDefault();
     let consultationData = {
       consultationId: id,
@@ -43,7 +43,7 @@ export default function Consultation() {
     };
     dispatch(updateConsultation(consultationData));
   };
-  const handleDiagnosis = (e) => {
+  const handleDiagnosis = e => {
     e.preventDefault();
     let consultationData = {
       consultationId: id,
@@ -52,7 +52,7 @@ export default function Consultation() {
     };
     dispatch(updateConsultation(consultationData));
   };
-  const handleChange = (e) => {
+  const handleChange = e => {
     setConsultationValue(e.target.value);
   };
 
@@ -122,11 +122,8 @@ export default function Consultation() {
                   <div>{consultation && consultation.email}</div>
                 </div>
                 <div className="details-row">
-                  <div className="details-label">DOB:</div>
-                  <div>
-                    {consultation &&
-                      format(new Date(consultation.dateOfBirth), "MM/dd/yyyy")}
-                  </div>
+                  <div className="details-label">Age</div>
+                  <div>{consultation && consultation.dateOfBirth}</div>
                 </div>
                 <div className="details-row">
                   <div className="details-label">Type:</div>

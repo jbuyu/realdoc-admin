@@ -1,5 +1,7 @@
 import { DataGrid } from "@mui/x-data-grid";
+import { Table } from "antd";
 import { format } from "date-fns";
+import moment from "moment";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
@@ -15,93 +17,171 @@ export default function ConsultationList() {
   const navigate = useNavigate();
 
   //selectors
-  const { user } = useSelector((state) => state.auth);
+  const { user } = useSelector(state => state.auth);
   const { consultations, isLoading, isError, message } = useSelector(
-    (state) => state.consultations
+    state => state.consultations
   );
+
+  // const columns = [
+  //   {
+  //     field: "createdAt",
+  //     headerName: "Date Created",
+  //     width: 130,
+  //     renderCell: params => {
+  //       return (
+  //         <div className="cellAction">
+  //           <div className="">
+  //             {format(new Date(params.row.createdAt), "MM/dd/yyyy")}
+  //           </div>
+  //         </div>
+  //       );
+  //     },
+  //   },
+  //   { field: "consultationType", headerName: "Type", width: 120 },
+  //   { field: "gender", headerName: "Gender", width: 70 },
+  //   {
+  //     field: "name",
+  //     headerName: "Name",
+  //     width: 140,
+  //     renderCell: params => {
+  //       return (
+  //         <div className="cellAction">
+  //           <div className="">
+  //             {params.row.firstName + " " + params.row.lastName}
+  //           </div>
+  //         </div>
+  //       );
+  //     },
+  //   },
+  //   { field: "phoneNo", headerName: "Phone Number", width: 120 },
+  //   {
+  //     field: "dateOfBirth",
+  //     headerName: "DOB",
+  //     width: 130,
+  //     renderCell: params => {
+  //       return (
+  //         <div className="cellAction">
+  //           <div className="">
+  //             {format(new Date(params.row.dateOfBirth), "MM/dd/yyyy")}
+  //           </div>
+  //         </div>
+  //       );
+  //     },
+  //   },
+  //   { field: "email", headerName: "Email", width: 130 },
+  //   { field: "symptoms", headerName: "Symptoms", width: 200 },
+  //   {
+  //     field: "status",
+  //     headerName: "Status",
+  //     width: 140,
+  //     renderCell: params => {
+  //       return (
+  //         <div className="cellAction">
+  //           {params.row.status === "Pending" ? (
+  //             <div className="pending-btn">PENDING</div>
+  //           ) : (
+  //             <div className="completed-btn">COMPLETED</div>
+  //           )}
+  //         </div>
+  //       );
+  //     },
+  //   },
+  //   {
+  //     field: "action",
+  //     headerName: "Action",
+  //     width: 140,
+  //     renderCell: params => {
+  //       return (
+  //         <div className="cellAction">
+  //           <Link
+  //             to={`/dashboard/consultations/${params.row._id}`}
+  //             style={{ textDecoration: "none" }}
+  //           >
+  //             <div className="viewButton">view</div>
+  //           </Link>
+  //         </div>
+  //       );
+  //     },
+  //   },
+  // ];
 
   const columns = [
     {
-      field: "createdAt",
-      headerName: "Date Created",
-      width: 130,
-      renderCell: (params) => {
-        return (
-          <div className="cellAction">
-            <div className="">
-              {format(new Date(params.row.createdAt), "MM/dd/yyyy")}
-            </div>
-          </div>
-        );
-      },
-    },
-    { field: "consultationType", headerName: "Type", width: 120 },
-    { field: "gender", headerName: "Gender", width: 70 },
-    {
-      field: "name",
-      headerName: "Name",
-      width: 140,
-      renderCell: (params) => {
-        return (
-          <div className="cellAction">
-            <div className="">
-              {params.row.firstName + " " + params.row.lastName}
-            </div>
-          </div>
-        );
-      },
-    },
-    { field: "phoneNo", headerName: "Phone Number", width: 120 },
-    {
-      field: "dateOfBirth",
-      headerName: "DOB",
-      width: 130,
-      renderCell: (params) => {
-        return (
-          <div className="cellAction">
-            <div className="">
-              {format(new Date(params.row.dateOfBirth), "MM/dd/yyyy")}
-            </div>
-          </div>
-        );
-      },
-    },
-    { field: "email", headerName: "Email", width: 130 },
-    { field: "symptoms", headerName: "Symptoms", width: 200 },
-    {
-      field: "status",
-      headerName: "Status",
-      width: 140,
-      renderCell: (params) => {
-        return (
-          <div className="cellAction">
-            {params.row.status === "Pending" ? (
-              <div className="pending-btn">PENDING</div>
-            ) : (
-              <div className="completed-btn">COMPLETED</div>
-            )}
-          </div>
-        );
-      },
+      title: "Date Created",
+      sorter: true,
+      key: "createdAt",
+      render: item =>
+        item.createdAt
+          ? moment(item.createdAt).format("MM-DD-YYYY")
+          : "<Never>",
     },
     {
-      field: "action",
-      headerName: "Action",
-      width: 140,
-      renderCell: (params) => {
-        return (
-          <div className="cellAction">
-            <Link
-              to={`/dashboard/consultations/${params.row._id}`}
-              style={{ textDecoration: "none" }}
-            >
-              <div className="viewButton">view</div>
-            </Link>
-          </div>
-        );
+      title: "First Name",
+      dataIndex: "firstName",
+      key: "fistName",
+    },
+    {
+      title: "Last Name",
+      dataIndex: "lastName",
+      key: "lastName",
+    },
+    {
+      title: "Type",
+      dataIndex: "consultationType",
+      key: "consultationType",
+    },
+    {
+      title: "Gender",
+      dataIndex: "gender",
+      key: "gender",
+    },
+
+    {
+      title: "Contact",
+      dataIndex: "phoneNo",
+      key: "contact",
+    },
+    {
+      title: "Age",
+      dataIndex: "dateOfBirth",
+      key: "dateOfBirth",
+    },
+    // {
+    //   title: "Email",
+    //   dataIndex: "email",
+    //   key: "email",
+    // },
+    {
+      title: "Symptoms",
+      dataIndex: "symptoms",
+      key: "symptoms",
+    },
+    {
+      title: "Status",
+      dataIndex: "status",
+      key: "status",
+      render: (item, record) => {
+        if (item === "Pending") {
+          <div>PENDING</div>
+        } else{
+          <div>COMPLETED</div>;
+        }
       },
+    },
+    {
+      title: "Actions",
+      dataIndex: "",
+      key: "x",
+      render: item => (
+        <Link
+          to={`/dashboard/consultations/${item._id}`}
+        >
+          <div className="viewButton">view</div>
+        </Link>
+      ),
     },
   ];
+
   useEffect(() => {
     if (isError) {
       console.log(message);
@@ -121,14 +201,7 @@ export default function ConsultationList() {
   return (
     <div className="consultationsList">
       <div style={{ height: 800, width: "100%" }}>
-        <DataGrid
-          getRowId={(row) => row._id}
-          rows={consultations}
-          columns={columns}
-          pageSize={10}
-          rowsPerPageOptions={[10]}
-          checkboxSelection
-        />
+        <Table rowKey="_id" dataSource={consultations} columns={columns} />
       </div>
     </div>
   );

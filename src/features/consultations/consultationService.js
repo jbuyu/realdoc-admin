@@ -2,7 +2,7 @@ import axios from "axios";
 
 const API_URL =
   process.env.NODE_ENV === "development"
-    ? "http://localhost:5000/api/consultations"
+    ? "http://localhost:4000/api/consultations"
     : "https://realdoc-server.herokuapp.com/api/consultations";
 
 const createConsultation = async (consultationData, token) => {
@@ -16,7 +16,7 @@ const createConsultation = async (consultationData, token) => {
   return response.data;
 };
 
-const getConsultations = async (token) => {
+const getConsultations = async token => {
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -27,7 +27,7 @@ const getConsultations = async (token) => {
   return response.data;
 };
 
-const getDoctorConsultations = async (token) => {
+const getDoctorConsultations = async token => {
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -38,7 +38,7 @@ const getDoctorConsultations = async (token) => {
   return response.data;
 };
 
-const getPendingConsultations = async (token) => {
+const getPendingConsultations = async token => {
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -49,7 +49,7 @@ const getPendingConsultations = async (token) => {
   return response.data;
 };
 
-const getCompletedConsultations = async (token) => {
+const getCompletedConsultations = async token => {
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
