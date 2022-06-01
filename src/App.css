@@ -1,6 +1,9 @@
 * {
   font-family: "Source Sans Pro", sans-serif;
 }
+a{
+  color:black !important;
+}
 
 .container {
   display: flex;

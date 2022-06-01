@@ -18,7 +18,7 @@ export default function SideBar() {
           <h3 className="sidebarTitle">Dashboard</h3>
           <Link to="/dashboard" className="sidebarListItem">
             <GroupIcon className="sidebarIcon" />
-            <div className="sidebar-title" >
+            <div className="" >
               Consultations
             </div>
           </Link>

@@ -1,6 +1,5 @@
-import { DataGrid } from "@mui/x-data-grid";
 import { Table } from "antd";
-import { format } from "date-fns";
+import Button from "antd-button-color"
 import moment from "moment";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -160,11 +159,12 @@ export default function ConsultationList() {
       title: "Status",
       dataIndex: "status",
       key: "status",
-      render: (item, record) => {
-        if (item === "Pending") {
-          <div>PENDING</div>
-        } else{
-          <div>COMPLETED</div>;
+      render: (record) => {
+        console.log("sta", record);
+        if (record === "Pending") {
+          return <Button type="primary">PENDING</Button>
+        } else {
+          return <Button type="success" >COMPLETED</Button>
         }
       },
     },
@@ -176,7 +176,7 @@ export default function ConsultationList() {
         <Link
           to={`/dashboard/consultations/${item._id}`}
         >
-          <div className="viewButton">view</div>
+          <Button type="dashed" >view</Button>
         </Link>
       ),
     },
