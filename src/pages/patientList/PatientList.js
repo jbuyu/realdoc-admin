@@ -78,9 +78,17 @@ export default function PatientList() {
       key: "status",
       render: record => {
         if (record === "Pending") {
-          return <Button type="primary">PENDING</Button>;
+          return (
+            <Button shape="round" size="small" type="primary">
+              PENDING
+            </Button>
+          );
         } else {
-          return <Button type="success">COMPLETED</Button>;
+          return (
+            <Button shape="round" size="small" type="success">
+              COMPLETED
+            </Button>
+          );
         }
       },
     },
@@ -90,7 +98,9 @@ export default function PatientList() {
       key: "x",
       render: item => (
         <Link to={`/dashboard/consultations/${item._id}`}>
-          <Button type="dashed">view</Button>
+          <Button size="small" type="dashed">
+            view
+          </Button>
         </Link>
       ),
     },
@@ -114,7 +124,12 @@ export default function PatientList() {
   return (
     <div className="consultationsList">
       <div style={{ height: 800, width: "100%" }}>
-        <Table rowKey="_id" dataSource={consultations} columns={columns} />
+        <Table
+          size="small"
+          rowKey="_id"
+          dataSource={consultations}
+          columns={columns}
+        />
       </div>
     </div>
   );

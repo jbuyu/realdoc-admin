@@ -159,12 +159,20 @@ export default function ConsultationList() {
       title: "Status",
       dataIndex: "status",
       key: "status",
-      render: (record) => {
+      render: record => {
         console.log("sta", record);
         if (record === "Pending") {
-          return <Button type="primary">PENDING</Button>
+          return (
+            <Button shape="round" size="small" type="primary">
+              PENDING
+            </Button>
+          );
         } else {
-          return <Button type="success" >COMPLETED</Button>
+          return (
+            <Button shape="round" size="small" type="success">
+              COMPLETED
+            </Button>
+          );
         }
       },
     },
@@ -173,10 +181,10 @@ export default function ConsultationList() {
       dataIndex: "",
       key: "x",
       render: item => (
-        <Link
-          to={`/dashboard/consultations/${item._id}`}
-        >
-          <Button type="dashed" >view</Button>
+        <Link to={`/dashboard/consultations/${item._id}`}>
+          <Button size="small" type="dashed">
+            view
+          </Button>
         </Link>
       ),
     },
@@ -201,7 +209,7 @@ export default function ConsultationList() {
   return (
     <div className="consultationsList">
       <div style={{ height: 800, width: "100%" }}>
-        <Table rowKey="_id" dataSource={consultations} columns={columns} />
+        <Table rowKey="_id" dataSource={consultations} columns={columns} size="small" />
       </div>
     </div>
   );

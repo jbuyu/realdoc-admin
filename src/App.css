@@ -37,3 +37,8 @@ header {
   background-color: red !important;
 }
 
+/* row data */
+.ant-table-tbody>tr>td {
+  height: 5px !important;
+  padding: 4px;
+}
